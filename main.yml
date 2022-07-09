@@ -1,0 +1,7 @@
+---
+- name: use motd role playbook
+  hosts: localhost
+
+  tasks:
+    - name: run echo command
+      command: /bin/echo hello world
