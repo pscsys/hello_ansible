@@ -9,9 +9,9 @@
     - name: Install apache packages 
       yum:
         name: httpd
-        state: present
+        state: absent
         
     - name: ensure httpd is running
       service:
         name: httpd 
-        state: started
+        state: stopped
