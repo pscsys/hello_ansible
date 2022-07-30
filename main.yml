@@ -10,8 +10,14 @@
       yum:
         name: httpd
         state: absent
-        
-    - name: ensure httpd is running
-      service:
-        name: httpd 
-        state: stopped
+
+    - name: Display content of resolv.conf
+      hosts: localhost
+      tasks:
+        - name: Display resolv.conf contents
+          command: cat resolv.conf chdir=/etc
+          register: command_output
+
+        - name: Print to console
+          debug:
+            msg: "{{command_output.stdout}}"
