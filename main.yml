@@ -11,13 +11,10 @@
         name: httpd
         state: absent
 
-    - name: Display content of resolv.conf
-      hosts: localhost
-      tasks:
-        - name: Display resolv.conf contents
-          command: cat resolv.conf chdir=/etc
-          register: command_output
+    - name: Display resolv.conf contents
+      command: cat resolv.conf chdir=/etc
+      register: command_output
 
-        - name: Print to console
-          debug:
-            msg: "{{command_output.stdout}}"
+    - name: Print to console
+      debug:
+        msg: "{{command_output.stdout}}"
