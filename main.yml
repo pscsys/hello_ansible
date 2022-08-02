@@ -2,17 +2,14 @@
 - name: use motd role playbook
   hosts: all
 
-  tasks:
-    - name: run echo command
-      command: /bin/echo hello world
-      
+  tasks:    
     - name: Install apache packages 
       yum:
         name: httpd
         state: absent
 
-    - name: Display resolv.conf contents
-      command: cat resolv.conf chdir=/etc
+    - name: Display hosts contents
+      command: cat hosts chdir=/etc
       register: command_output
 
     - name: Print to console
